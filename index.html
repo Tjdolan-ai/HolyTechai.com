@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="font-sans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Holy Tech AI: Empowering people of faith with ethical AI technology for spiritual growth and community building.">
+    <title>Holy Tech AI - Faith Meets Innovation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #020617; /* bg-slate-950 */
+            color: #e2e8f0; /* slate-200 (default text for body) */
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            line-height: 1.625; /* leading-relaxed */
+            letter-spacing: 0.025em; /* tracking-wide */
+            margin: 0;
+            padding: 0;
+        }
+        .font-sans { /* Applied to html tag */
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        .container { /* General container for consistent spacing */
+            width: 90%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        /* Header/Nav styling to match dark theme */
+        header .logo-text {
+            color: #e2e8f0; /* slate-200 */
+        }
+        header .nav-link {
+            color: #cbd5e1; /* slate-300 */
+            transition: color 0.3s ease;
+        }
+        header .nav-link.active,
+        header .nav-link:hover {
+            color: #7dd3fc; /* cyan-300 */
+        }
+
+        /* New Hero Section */
+        .new-hero-section {
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom right, #0f172a, #020617); /* from-slate-900 to-slate-950 */
+            position: relative;
+            overflow: hidden;
+        }
+        .new-hero-section::before { 
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0dGVybiBpZD0iY2lyY2xlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIj48Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L3N2Zz4=');
+            pointer-events: none;
+        }
+        .new-hero-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+        .new-hero-subtitle {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+        .btn-explore-blog {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            background-color: #0891b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.2);
+        }
+        .btn-explore-blog:hover {
+            background-color: #0e7490;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+        }
+
+        /* Mission Statement Section */
+        .mission-section {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .mission-text {
+            color: #cbd5e1;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Featured Image Section */
+        .featured-image-section {
+            padding: 2rem 1rem 3rem;
+            text-align: center;
+        }
+        .featured-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 15px 30px rgba(8, 145, 178, 0.2);
+            border: 1px solid #06b6d4;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        /* Feature Preview Section */
+        .feature-preview-section {
+            padding: 3rem 1rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid #06b6d4;
+            border-radius: 1rem; 
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.12);
+            color: #cbd5e1;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.25), 0 4px 6px -2px rgba(6, 182, 212, 0.1);
+        }
+        .feature-card-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 1rem;
+            color: #06b6d4; 
+            background-color: rgba(6, 182, 212, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .feature-card h3 {
+            color: #7dd3fc;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+            color: #94a3b8;
+        }
+        .feature-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .feature-card a:hover h3 {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Styling for existing sections */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #7dd3fc;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+        }
+        .value-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+             gap: 1.5rem;
+        }
+        .value-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid #06b6d4;
+            border-radius: 1rem;
+            padding: 1.75rem 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.12);
+            color: #cbd5e1;
+            text-align: center;
+        }
+        .value-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.25), 0 4px 6px -2px rgba(6, 182, 212, 0.1);
+        }
+        .value-card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .value-card h3 {
+            color: #7dd3fc;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .value-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 0;
+        }
+
+        .waitlist-section-container {
+             background: linear-gradient(145deg, #0f172a, #1e293b);
+             border: 1px solid #06b6d4;
+             border-radius: 1rem;
+             padding: 2.5rem;
+             max-width: 600px;
+             margin: 3rem auto;
+             text-align: center;
+             box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 15px 30px rgba(8, 145, 178, 0.2);
+        }
+        .waitlist-section-container h2 {
+            color: #7dd3fc;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+        .waitlist-section-container p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+        .waitlist-form input[type="email"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            background-color: #020617;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .waitlist-form input[type="email"]:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        }
+        .waitlist-form button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: #0891b2;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .waitlist-form button[type="submit"]:hover {
+            background-color: #0e7490;
+            transform: translateY(-1px);
+        }
+        .wormwood-hook-container {
+            max-width: 800px; 
+            margin: 2rem auto;
+            padding: 1.5rem; 
+            background: #0f172a;
+            border: 1px solid #ec4899;
+            border-radius: 0.75rem; 
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.15);
+        }
+        .wormwood-hook-container p:first-child {
+            font-style: italic; 
+            color: #f472b6;
+            text-shadow: 0 0 5px rgba(236, 72, 153, 0.3); 
+            margin-bottom: 0.75rem;
+        }
+        .wormwood-hook-container p:last-child {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+        .wormwood-hook-container em {
+            color: #f472b6;
+            font-style: normal;
+        }
+
+        /* Announcement Banner */
+        .announcement-banner {
+            background-color: #0f172a;
+            border-bottom: 1px solid #06b6d4;
+            padding: 0.75rem 0;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #f8fafc;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+            position: relative;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .announcement-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(240, 171, 252, 0.05), rgba(8, 145, 178, 0.15), rgba(240, 171, 252, 0.05));
+            animation: shimmer 3s infinite linear;
+            z-index: -1;
+        }
+        .announcement-banner p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Footer styling */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid #1e293b;
+        }
+        footer h3 {
+            color: #7dd3fc;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+        footer .footer-links li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer .footer-links li a:hover {
+            color: #7dd3fc;
+        }
+        footer .copyright p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        footer .footer-col img {
+             border: 2px solid #06b6d4;
+             box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="container">
+            <p>UNDER CONSTRUCTION, SOON HIS HEAD WILL BE UNDER OUR FEET</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container container">
+            <a href="index.html" class="logo-container">
+                <div class="logo"></div>
+                <div class="logo-text">HolyTechAI</div>
+            </a>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Wormwood Hook Section -->
+        <section class="container" style="margin-top: 40px; margin-bottom: 40px;">
+            <div class="wormwood-hook-container">
+                <p style="font-style: italic; color: var(--accent-magenta); text-shadow: 0 0 5px var(--glow-magenta); margin-bottom: 10px;">From the desk of Wormwood:</p>
+                <p style="font-size: 1.1rem; line-height: 1.6;">"My dear uncle Screwtape, I write with grave concern. The humans have begun to harness their artificial intelligence for <em>spiritual growth</em>. They're creating technology that strengthens faith rather than distracts from it. If they succeed in merging ancient wisdom with modern innovation, our carefully crafted digital distractions will be rendered useless. We must act quickly before this 'Holy Tech' movement gains momentum..."</p>
+            </div>
+        </section>
+        
+        <!-- New Hero Section -->
+        <section class="new-hero-section">
+            <div class="container">
+                <h1 class="new-hero-title">Welcome to HolyTechAI</h1>
+                <p class="new-hero-subtitle">Where Sacred Wisdom Meets Advanced Intelligence</p>
+                <a href="blog.html" class="btn-explore-blog">Explore Blog</a>
+            </div>
+        </section>
+
+        <!-- Mission Statement Section -->
+        <section class="mission-section">
+            <div class="container">
+                <p class="mission-text">Our mission is to bridge the sacred and the synthetic—to help believers navigate, harness, and discern the age of artificial intelligence with spiritual clarity and ethical grounding.</p>
+            </div>
+        </section>
+
+        <!-- Featured Image Section -->
+        <section class="featured-image-section">
+            <div class="container">
+                <img src="images/faith tree with cross star.jpg" alt="Faith Tree with Cross and Star" class="featured-image">
+            </div>
+        </section>
+
+        <!-- Feature Preview Section -->
+        <section class="feature-preview-section">
+            <div class="container">
+                <h2 class="section-title">Discover Our Initiatives</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <a href="#"> <!-- Placeholder link -->
+                            <div class="feature-card-icon"><span>SF</span></div>
+                            <h3>Spiritual Fingerprint</h3>
+                            <p>AI-driven insights to understand and nurture your unique spiritual journey and gifts.</p>
+                        </a>
+                    </div>
+                    <div class="feature-card">
+                        <a href="#"> <!-- Placeholder link -->
+                            <div class="feature-card-icon"><span>SA</span></div>
+                            <h3>Screwtape Series AI</h3>
+                            <p>Interactive AI experiences inspired by C.S. Lewis's wisdom on navigating modern trials.</p>
+                        </a>
+                    </div>
+                    <div class="feature-card">
+                        <a href="#"> <!-- Placeholder link -->
+                            <div class="feature-card-icon"><span>DA</span></div>
+                            <h3>Devotional AI</h3>
+                            <p>Personalized devotionals and study aids, ethically crafted to deepen your faith.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="value-grid card-grid">
+                <div class="value-card">
+                    <div style="height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
+                        <img src="assets/images/ai orb.jpg" alt="Ethical AI" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Ethical AI</h3>
+                    <p>We develop AI solutions that align with faith values, ensuring technology serves humanity with integrity and respect.</p>
+                </div>
+                <div class="value-card">
+                    <div style="height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
+                        <img src="assets/images/bible with particles coming up.jpg" alt="Spiritual Growth" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Spiritual Growth</h3>
+                    <p>Our tools are designed to enhance your spiritual journey, not replace human connection or divine relationship.</p>
+                </div>
+                <div class="value-card">
+                    <div style="height: 180px; overflow: hidden; border-radius: 8px; margin-bottom: 20px;">
+                        <img src="assets/images/faith tree with cross star.jpg" alt="Community" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Community</h3>
+                    <p>We believe in technology that brings people together, strengthening faith communities rather than isolating individuals.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist Section -->
+        <section id="waitlist" class="container">
+            <div class="waitlist-section-container">
+                <h2>Join Our Waitlist</h2>
+                <p>Be among the first to experience Holy Tech AI when we launch. We'll keep you updated on our progress.</p>
+                <form class="waitlist-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%">Sign Up</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Circuit Cross Divider -->
+    <div style="text-align: center; margin: 60px auto; max-width: 100%; height: 60px; background: url('assets/images/c8.jpg') center center; background-size: contain; background-repeat: no-repeat; opacity: 0.8;"></div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <img src="assets/images/cross made entirely by computer chips.jpg" alt="Tech Faith Cross" style="max-width: 100px; border-radius: 50%; border: 2px solid var(--accent-magenta); box-shadow: 0 0 15px var(--glow-magenta);">
+                    </div>
+                    <h3>HolyTechAI</h3>
+                    <p>Bridging the gap between ancient wisdom and modern technology to create a more spiritually connected digital world.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="tools.html">Tools</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#use-cases">Use Cases</a></li>
+                        <li><a href="#">Ethics Pledge</a></li>
+                        <li><a href="#">Support / FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 HolyTechAI. All rights reserved. Built in Good Faith.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

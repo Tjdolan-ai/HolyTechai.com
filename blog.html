@@ -1,0 +1,427 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HolyTechAI Blog: Explore insights, tutorials, and discussions on faith, ethics, and artificial intelligence.">
+    <title>Blog - Faith + AI Insights - HolyTechAI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #020617; /* slate-950 */
+            color: #e2e8f0; /* slate-200 */
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.625;
+            letter-spacing: 0.025em;
+        }
+        /* Blog Layout */
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        @media (min-width: 1024px) {
+            .blog-layout {
+                grid-template-columns: 1fr 0.4fr;
+                max-width: 1200px;
+            }
+        }
+
+        /* Blog Post Cards */
+        .blog-post-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid #06b6d4;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(8, 145, 178, 0.3), 0 4px 6px -2px rgba(8, 145, 178, 0.15);
+        }
+
+        .blog-post-content {
+            padding: 1.75rem 2rem;
+        }
+
+        .blog-post-meta {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blog-post-card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .blog-post-card h3 a {
+            color: #7dd3fc;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .blog-post-card h3 a:hover {
+            color: #38bdf8;
+        }
+
+        .blog-post-card h3 a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #7dd3fc;
+            transition: width 0.3s ease;
+        }
+
+        .blog-post-card h3 a:hover::after {
+            width: 100%;
+        }
+
+        .blog-post-card p {
+            color: #cbd5e1;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.6;
+        }
+
+        .read-more-link {
+            display: inline-block;
+            color: #f472b6;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .read-more-link:hover {
+            color: #ec4899;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background-color: #1e293b;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #0e7490;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-widget h4 {
+            margin: 0 0 1.25rem 0;
+            color: #7dd3fc;
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-widget ul li {
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .sidebar-widget ul li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .sidebar-widget ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .sidebar-widget ul li a:hover {
+            color: #7dd3fc;
+            padding-left: 0.5rem;
+        }
+
+        /* Search Widget */
+        .sidebar-search {
+            position: relative;
+        }
+
+        .sidebar-search form {
+            display: flex;
+        }
+
+        .sidebar-search input[type="search"] {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: #f1f5f9;
+            border-radius: 0.5rem 0 0 0.5rem;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-search input[type="search"]:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.2);
+        }
+
+        .sidebar-search button {
+            padding: 0 1.25rem;
+            background-color: #0891b2;
+            color: white;
+            border: none;
+            border-radius: 0 0.5rem 0.5rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-search button:hover {
+            background-color: #0e7490;
+        }
+    </style>
+    </head>
+<body class="font-sans tracking-wide leading-relaxed">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="nav-container container">
+            <a href="index.html" class="logo-container">
+                <div class="logo"></div>
+                <div class="logo-text">HolyTechAI</div>
+            </a>
+            <nav>
+                 <ul class="navbar">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="blog-hero" class="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0dGVybiBpZD0iY2lyY2xlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoNDUpIj48Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L3N2Zz4=')]"></div>
+            </div>
+            <div class="container relative z-10 px-4 mx-auto text-center">
+                <div class="inline-block px-6 py-2 mb-4 text-sm font-medium tracking-wider text-cyan-300 uppercase bg-cyan-900 bg-opacity-50 rounded-full">Latest Insights</div>
+                <h1 class="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl font-display">Faith + AI Insights</h1>
+                <p class="max-w-3xl mx-auto text-xl text-slate-300">Navigating the Future, Guided by Wisdom. Explore thought leadership, practical tutorials, ethical discussions, and the latest news.</p>
+                <div class="absolute bottom-0 left-0 right-0 flex justify-center -mb-px">
+                    <div class="w-32 h-1 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-full"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-content">
+            <div class="container blog-layout">
+                <div class="blog-main-feed">
+                    <!-- Featured Post Example -->
+                    <article class="blog-post-card featured-post">
+                        <!-- <img src="path/to/featured-image.jpg" alt="Featured post image"> -->
+                        <div class="blog-post-content">
+                            <p class="blog-post-meta">
+                                <span>📅 May 01, 2025</span> | <span>🏷️ Thought Leadership, Ethics</span>
+                            </p>
+                            <h3><a href="#">The Trailblazing Shepherd: Leading with Wisdom in the Age of AI</a></h3>
+                            <p>As AI reshapes our world, how can Christian leaders navigate this new landscape with biblical integrity and foresight? Explore a framework for ethical adoption...</p>
+                            <a href="#" class="read-more-link">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Regular Posts -->
+                     <article class="blog-post-card">
+                        <!-- <img src="path/to/post1-image.jpg" alt="Post image"> -->
+                        <div class="blog-post-content">
+                            <p class="blog-post-meta">
+                                <span>📅 April 28, 2025</span> | <span>🏷️ Tutorials, Use Cases</span>
+                            </p>
+                            <h3><a href="#">5 Ways to Use AI for More Engaging Sermon Preparation</a></h3>
+                            <p>Discover practical prompts and workflows using tools like Sermon Copilot to spark creativity and save time...</p>
+                            <a href="#" class="read-more-link">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                     <article class="blog-post-card">
+                        <!-- <img src="path/to/post2-image.jpg" alt="Post image"> -->
+                        <div class="blog-post-content">
+                            <p class="blog-post-meta">
+                                <span>📅 April 25, 2025</span> | <span>🏷️ News, Industry Insights</span>
+                            </p>
+                            <h3><a href="#">FaithTech News Roundup: AI in Bible Translation & Community Apps</a></h3>
+                            <p>This week's highlights include breakthroughs in AI-assisted scripture translation and new platforms fostering digital fellowship...</p>
+                            <a href="#" class="read-more-link">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                     <article class="blog-post-card">
+                        <!-- <img src="path/to/post3-image.jpg" alt="Post image"> -->
+                        <div class="blog-post-content">
+                            <p class="blog-post-meta">
+                                <span>📅 April 22, 2025</span> | <span>🏷️ Ethics, Discussion</span>
+                            </p>
+                            <h3><a href="#">Can AI Help Us Pray? Exploring AI Prayer Assistants Ethically</a></h3>
+                            <p>A nuanced discussion on the potential benefits and pitfalls of using AI tools to guide or generate prayer content...</p>
+                            <a href="#" class="read-more-link">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Pagination -->
+                    <nav class="flex items-center justify-between mt-12 mb-8">
+                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-cyan-400 bg-slate-800 border border-cyan-500 rounded-lg hover:bg-cyan-900 hover:bg-opacity-30 transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            Previous
+                        </a>
+                        <div class="hidden space-x-1 md:flex">
+                            <a href="#" class="px-3 py-2 text-sm font-medium text-white bg-cyan-600 rounded-md hover:bg-cyan-700">1</a>
+                            <a href="#" class="px-3 py-2 text-sm font-medium text-slate-300 rounded-md hover:bg-slate-800">2</a>
+                            <a href="#" class="px-3 py-2 text-sm font-medium text-slate-300 rounded-md hover:bg-slate-800">3</a>
+                            <span class="px-3 py-2 text-sm font-medium text-slate-500">...</span>
+                            <a href="#" class="px-3 py-2 text-sm font-medium text-slate-300 rounded-md hover:bg-slate-800">8</a>
+                        </div>
+                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-cyan-400 bg-slate-800 border border-cyan-500 rounded-lg hover:bg-cyan-900 hover:bg-opacity-30 transition-colors duration-200">
+                            Next
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </nav>
+                </div>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget sidebar-search">
+                        <h4>Search Insights</h4>
+                        <form action="#" method="get">
+                            <input type="search" placeholder="Search..." name="s">
+                            <button type="submit" class="btn">Go</button>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="#">Thought Leadership</a></li>
+                            <li><a href="#">Ethics & Responsibility</a></li>
+                            <li><a href="#">Tutorials & How-Tos</a></li>
+                            <li><a href="#">Use Cases & Case Studies</a></li>
+                            <li><a href="#">FaithTech News</a></li>
+                            <li><a href="#">Community Spotlights</a></li>
+                            <li><a href="#">Tool Updates</a></li>
+                        </ul>
+                    </div>
+
+                     <div class="sidebar-widget">
+                        <h4>Recent Posts</h4>
+                        <ul>
+                            <li><a href="#">The Trailblazing Shepherd...</a></li>
+                            <li><a href="#">5 Ways to Use AI for Sermon Prep...</a></li>
+                            <li><a href="#">FaithTech News Roundup...</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Stay Informed</h4>
+                        <p>Get the latest Faith + AI insights delivered to your inbox.</p>
+                        <form action="#" method="post">
+                            <input type="email" placeholder="Your email" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid var(--border-color); background-color: var(--secondary-color); color: var(--text-color); border-radius: 4px;">
+                            <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                        </form>
+                    </div>
+
+                     <div class="sidebar-widget">
+                        <h4>Featured Tool</h4>
+                        <!-- Icon/Image Placeholder -->
+                        <p>Try the <a href="tools.html#ai-orb">AI Orb</a> for scripture-based insights.</p>
+                        <a href="tools.html#ai-orb" class="btn">Try Now</a>
+                    </div>
+
+                    <!-- Coming Next Week Info Box -->
+                    <div class="sidebar-widget bg-slate-900 border-l-4 border-cyan-500 p-4 rounded-lg shadow-md" style="position: relative; overflow: hidden;">
+                        <!-- Animated glow effect -->
+                        <div style="position: absolute; width: 200%; height: 100%; background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.1), transparent); top: 0; left: -100%; animation: shimmer 3s infinite linear;"></div>
+                        
+                        <h4 style="color: #7dd3fc; text-shadow: 0 0 10px rgba(125, 211, 252, 0.5);">Coming Next Week</h4>
+                        
+                        <p>We're researching the best faith-aligned tools, resources, and AI platforms—and we'll only recommend what we genuinely believe in.</p>
+                        
+                        <p style="margin-top: 1rem; font-style: italic; color: #f472b6; text-shadow: 0 0 8px rgba(244, 114, 182, 0.4);">"Truth before commission. Wisdom before noise."</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer content identical to index.html -->
+         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HolyTechAI</h3>
+                     <p>Bridging the gap between ancient wisdom and modern technology to create a more spiritually connected digital world.</p>
+                     <!-- Social Links Placeholder -->
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="tools.html">Tools</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#use-cases">Use Cases</a></li>
+                        <li><a href="#">Ethics Pledge</a></li>
+                        <li><a href="#">Support / FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="affiliate.html">Affiliate Program</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 HolyTechAI. All rights reserved. Built in Good Faith.</p>
+                <p class="text-center text-slate-400 text-xs mt-8">📚 Next week on HolyTechAI: Truth-backed reviews of faith-first tools, AI resources, and ethical tech insights. Stay tuned.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en" class="font-sans">
